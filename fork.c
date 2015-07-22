@@ -22,7 +22,7 @@ int child_function(char *filename) {
 		read_in = read(in_fd, buffer, 512);
 		write(out_fd, buffer, read_in);
 	} while (read_in);
-	sleep(10);
+	sleep(5);
 	close(in_fd);
 	close(out_fd);
 	return 0;
