@@ -1,8 +1,10 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void child_function(void) {
+int child_function(void) {
 	sleep(3);
+
+	return 0;
 }
 
 int main(int argc, char *argv[])
@@ -13,6 +15,9 @@ int main(int argc, char *argv[])
 		perror("Could not fork");
 	} else if (child) { //Parent
 		printf("New process is %d\n", child);
+		datum = 5;
+		waitpid(child, NULL, 0);
+
 		//printf("datum = %d\n", datum);
 	} else { //Child
 		child_function();
